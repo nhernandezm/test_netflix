@@ -24,7 +24,7 @@ module.exports = (req, res, next) => {
                 
                 
                const role = authData.user.role;
-               if(role === "admin"){
+               if(role === "user"){
  
                 next();
                } else{

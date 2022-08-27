@@ -4,7 +4,11 @@ const app = express();
 //nos ayuda a analizar el cuerpo de la solicitud POST
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
+const cors = require('cors');
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+}));
 //cargamos el archivo de rutas
 app.use(require('./routes/index'));
 

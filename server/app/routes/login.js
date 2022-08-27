@@ -27,12 +27,12 @@ const login = async (req, res) => {
             user.password = undefined;
             const jsontoken = jsonwebtoken.sign({user: user}, process.env.SECRET_KEY, { expiresIn: '30m'} );
             res.cookie('token', jsontoken, { httpOnly: true, secure: true, SameSite: 'strict' , expires: new Date(Number(new Date()) + 30*60*1000) }); 
-            res.json({token: jsontoken});
+            res.json({code:200,token: jsontoken});
      
         }  else{
             return res.json({
                 code:400,
-                message: "Invalid user name or password 2"
+                message: "Invalid user name or password"
             });
         } 
      
@@ -40,7 +40,7 @@ const login = async (req, res) => {
             console.log(e);
             return res.json({
                 code:400,
-                message: "Invalid user name or password 3"
+                message: "Invalid user name or password"
             });
         }
 };
